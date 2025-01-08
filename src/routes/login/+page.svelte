@@ -1,10 +1,22 @@
 <script lang="ts">
     export let data: { spotifyAuthUrl: string };
+
+    function openSpotifyAuthWindow() {
+        const width = 500;
+        const height = 700;
+        const left = (window.innerWidth - width) / 2;
+        const top = (window.innerHeight - height) / 2;
+        const spotifyAuthWindow = window.open(
+            data.spotifyAuthUrl,
+            "SpotifyLogin",
+            `width=${width},height=${height},top=${top},left=${left},resizable=yes`
+        );
+    }
 </script>
 
 <div class="login-container">
     <h1>Unify</h1>
-    <button on:click={() => (window.location.href = data.spotifyAuthUrl)}>
+    <button on:click={openSpotifyAuthWindow}>
         Login with Spotify
     </button>
 </div>
